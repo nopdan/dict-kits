@@ -3,15 +3,15 @@ Author: 单单 <cxprcn@gmail.com>
 """
 
 # 读取全拼词库
-f = open("词库.txt", "r")
+f = open(r"词库.txt", "r", encoding="utf-8")
 qp = f.readlines()
 f.close()
 
 ## 选择分隔符
-split_qp = "'"
+split_qp = " "
 
 # 读取全拼-双拼映射
-f = open("全拼-双拼映射表.txt", "r")
+f = open(r"全拼-双拼映射表.txt", "r", encoding="utf-8")
 f_data = f.readlines()
 f.close()
 
@@ -24,7 +24,7 @@ split_sp = "'"
 form2 = 1
 
 # 保存双拼词库
-f = open("双拼词库.txt","w")
+f = open(r"双拼词库.txt","w",encoding="utf-8")
 
 
 di = {}
@@ -49,8 +49,8 @@ def gen(li: list[str], form2: int):
     return r
 
 for line in qp:
-    wc = line.split("\t")
-    if wc != 2:
+    wc = line.strip().split("\t")
+    if len(wc) != 2:
         continue
     c = wc[1].split(split_qp)
     if len(wc[0]) != len(c):  # 词长和音节长度不一
