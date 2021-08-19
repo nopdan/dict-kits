@@ -12,14 +12,13 @@ split_sp = "'"  # form=1 分隔符
 form2 = 1  # form=2 三字词格式(1: a1a2b1c1，2: a1b1c1c2)
 
 # 读取全拼词库
-f = open(fp_mb, "r", encoding="utf-8")
-qp = f.readlines()
-f.close()
+with open(fp_mb, "r", encoding="utf-8") as f:
+    qp = f.readlines()
 
 # 读取全拼-双拼映射
-f = open(fp_map, "r", encoding="utf-8")
-f_data = f.readlines()
-f.close()
+with open(fp_map, "r", encoding="utf-8") as f:
+    f_data = f.readlines()
+
 di = {}
 for line in f_data:
     a = line.strip("\n").split("\t")
