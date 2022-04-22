@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Author: 单单 <cxprcn@gmail.com>
-# Discription: 全码码表转出简不出全码表
+# Description: 全码码表转出简不出全码表
 
 # 初始化数据
 fMB = r"mb.txt"  # 码表路径
