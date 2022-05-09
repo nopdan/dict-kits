@@ -3,16 +3,25 @@
 # Description: 全码码表转出简不出全码表
 
 # 初始化数据
-fMB = r"mb.txt"  # 码表路径
-fRes = r"res.txt"  # 保存路径
-lenCode_limit = {1: 2, 2: 2, 4: 99}  # 1简2重，2简2重，不指定为1重
-isFreq = False  # 是否按照词频重新排序 True|False
-fFreq = r"word_freq.txt"  # 词频路径
+
+fMB = input("码表路径：")  # 码表路径
+fRes = input("保存路径：")  # 保存路径
+# lenCode_limit = {1: 2, 2: 1, 4: 99}  # 1简2重，2简2重，不指定为1重
+lenCode_limit = eval("{" + input("规则：(例 1:2, 4:99)\n") + "}")  # 1简2重，2简2重，不指定为1重
+if len(lenCode_limit) == 0:
+    lenCode_limit = {1: 2, 4: 99}
+isFreq = input("是否按照词频重新排序(False|True):")  # 是否按照词频重新排序 True|False
+if isFreq == "True":
+    fFreq = input("词频路径:")  # 词频路径
 
 # 处理码表
+word_codes = []
 with open(fMB, "r", encoding="utf-8") as f:  # 载入码表
-    temp = f.readlines()
-    word_codes = [i.strip("\n").split("\t") for i in temp]
+    lines = f.readlines()
+    for i in lines:
+        temp = i.strip("\n").split("\t")
+        if len(temp) == 2:
+            word_codes.append([temp[0], temp[1]])
 
 # 排序
 if isFreq:

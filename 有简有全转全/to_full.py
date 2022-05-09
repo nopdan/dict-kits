@@ -8,7 +8,10 @@ Author: 单单 <cxprcn@gmail.com>
 from typing import List, Dict
 
 # 有简有全的码表
-with open("zzdyx.full.dict.yaml", encoding="utf-8") as f:
+
+fMB = input("码表路径：")  # 码表路径
+fRes = input("保存路径：")  # 保存路径
+with open(fMB, encoding="utf-8") as f:
     lines = f.readlines()
     di: Dict[str, List[str]] = {}
     for line in lines:
@@ -32,7 +35,7 @@ with open("zzdyx.full.dict.yaml", encoding="utf-8") as f:
                 # print("type: 2", di[w])
 
 # 保存
-with open("zzdyx.single.txt","w",encoding="utf-8") as f:
-    for key,value in di.items():
+with open(fRes, "w", encoding="utf-8") as f:
+    for key, value in di.items():
         for code in value:
             f.write(f"{key}\t{code}\n")
